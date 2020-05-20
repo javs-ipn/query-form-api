@@ -1,0 +1,53 @@
+# Env files #
+.env.test
+.editorconfig
+
+# Logs #
+/logs
+*.log
+*.log*
+
+# Node files #
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS generated files #
+.DS_Store
+Thumbs.db
+*npm-start.command*
+
+# Typing #
+typings/
+
+# Dist #
+dist/
+ormconfig.json
+tsconfig.build.json
+
+# IDE #
+.idea/
+*.swp
+.awcache
+.vscode
+
+# Generated source-code #
+src/**/*.js
+src/**/*.js.map
+!src/public/**/*
+test/**/*.js
+test/**/*.js.map
+coverage/
+!test/preprocessor.js
+mydb.sql
+
+# Other
+.travis.yml
+appveyor.yml
+yarn.lock

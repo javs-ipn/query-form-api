@@ -1,0 +1,2215 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courier Connection Api | API Reference</title>
+    <link rel="stylesheet" href="stylesheets/foundation.min.css" />
+    <link rel="stylesheet" href="stylesheets/spectacle.min.css" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="javascripts/foundation.js"></script> -->
+    <script src="javascripts/spectacle.min.js"></script>
+  </head>
+  <body id="spectacle">
+    <div id="page" class="drawer-layout drawer-slide-right-large">
+      <div id="sidebar">
+        <button class="close-button" aria-label="Close menu" type="button" data-drawer-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="logo">
+          <img src="images/ccalogo.png" title="Courier Connection Api" /> </div>
+        <nav id="nav" role="navigation">
+          <h5>Topics</h5>
+          <a href="#introduction">Introduction</a>
+          <a href="#authentication">Authentication</a>
+          <h5>Operations</h5>
+          <section>
+            <a href="#tag-Rate">Rate</a>
+            <ul>
+              <li>
+                <a href="#operation--rate-post"> Rate Request </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Shipment">Shipment</a>
+            <ul>
+              <li>
+                <a href="#operation--shipment-post"> Shipment Request </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Tracking">Tracking</a>
+            <ul>
+              <li>
+                <a href="#operation--tracking-post"> Tracking Request </a>
+              </li>
+            </ul>
+          </section>
+          <h5>Schema Definitions</h5>
+          <a href="#definition-GenericRateObject"> GenericRateObject </a>
+          <a href="#definition-RatePackage"> RatePackage </a>
+          <a href="#definition-RatePackageDimensions"> RatePackageDimensions </a>
+          <a href="#definition-RateLocation"> RateLocation </a>
+          <a href="#definition-ShipmentRateDetail"> ShipmentRateDetail </a>
+          <a href="#definition-GenericShipmentRequest"> GenericShipmentRequest </a>
+          <a href="#definition-GenericContactInfo"> GenericContactInfo </a>
+          <a href="#definition-GenericRequestedShipment"> GenericRequestedShipment </a>
+          <a href="#definition-GenericTrackingRequest"> GenericTrackingRequest </a>
+          <a href="#definition-GenericRateResponse"> GenericRateResponse </a>
+          <a href="#definition-CourierRate"> CourierRate </a>
+          <a href="#definition-RateCourierServiceType"> RateCourierServiceType </a>
+          <a href="#definition-ChargesDetail"> ChargesDetail </a>
+          <a href="#definition-GenericShipmentResponse"> GenericShipmentResponse </a>
+          <a href="#definition-ChildWaybill"> ChildWaybill </a>
+          <a href="#definition-GenericTrackingResponse"> GenericTrackingResponse </a>
+          <a href="#definition-DeliveryData"> DeliveryData </a>
+          <a href="#definition-Waybill"> Waybill </a>
+          <a href="#definition-CourierEvent"> CourierEvent </a>
+        </nav>
+      </div>
+      <div id="docs" class="row collapse expanded drawer" data-drawer>
+        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
+          <span class="hamburger"></span>
+        </button>
+        <div class="example-box doc-content"></div>
+        <article>
+          <h1 class="doc-title">Courier Connection Api
+            <span>API Reference</span>
+          </h1>
+          <div id="introduction" data-traverse-target="introduction">
+            <div class="doc-row">
+              <div class="doc-copy">
+                <p>Rest api to request waybills to different delivery services such as ESTAFETA, DHL, FEDEX, REDPACK, PAQUETEEXPRESS.</p>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>API Endpoint</h5>
+                  <!-- <div class="hljs"> --><pre><code>https://0.0.0.0:3000/api</code></pre>
+                  <!-- </div> -->
+                  <h5>Request Content-Types:
+                    <span>application/json, application/xml</span>
+                  </h5>
+                  <h5>Response Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Schemes:
+                    <span>https, http</span>
+                  </h5>
+                  <h5>Version:
+                    <span>1.14.1</span>
+                  </h5>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!-- <h1 id="security" data-traverse-target="security">Security</h1> -->
+          <h1 id="authentication" data-traverse-target="authentication">Authentication</h1>
+          <h1 id="tag-Rate" class="swagger-summary-tag" data-traverse-target="tag-Rate">Rate</h1>
+          <div id="operation--rate-post" class="operation panel" data-traverse-target="operation--rate-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Rate">Rate</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Rate Request</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/rate</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Get quotation for a shipment</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericRateObject">GenericRateObject</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Rate object required to quote</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+  <span class="hljs-attr">&quot;packages&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;packageInfo&quot;</span>: {
+        <span class="hljs-attr">&quot;weight&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;width&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;height&quot;</span>: <span class="hljs-number">5</span>
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;iPhone X&quot;</span>,
+      <span class="hljs-attr">&quot;customsValue&quot;</span>: <span class="hljs-number">200</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;shipperLocation&quot;</span>: {
+    <span class="hljs-attr">&quot;zipcode&quot;</span>: <span class="hljs-string">&quot;07550&quot;</span>,
+    <span class="hljs-attr">&quot;cityName&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+    <span class="hljs-attr">&quot;countryISOCode&quot;</span>: <span class="hljs-string">&quot;MX&quot;</span>
+  },
+  <span class="hljs-attr">&quot;recipientLocation&quot;</span>: {
+    <span class="hljs-attr">&quot;zipcode&quot;</span>: <span class="hljs-string">&quot;07550&quot;</span>,
+    <span class="hljs-attr">&quot;cityName&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+    <span class="hljs-attr">&quot;countryISOCode&quot;</span>: <span class="hljs-string">&quot;MX&quot;</span>
+  },
+  <span class="hljs-attr">&quot;preferredCouriers&quot;</span>: [
+    <span class="hljs-string">&quot;ENVIOCLICK&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;shipmentRateDetail&quot;</span>: {
+    <span class="hljs-attr">&quot;contentType&quot;</span>: <span class="hljs-string">&quot;DOCUMENTS&quot;</span>,
+    <span class="hljs-attr">&quot;dropOffType&quot;</span>: <span class="hljs-string">&quot;REGULAR_PICKUP&quot;</span>,
+    <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+    <span class="hljs-attr">&quot;insurance&quot;</span>: <span class="hljs-string">&quot;true&quot;</span>
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericRateResponse">GenericRateResponse</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>The server couldn&#39;t send a response</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">409 Conflict</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not found credential with courierId: 1 tenant: 54321 and credential type: RATE</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;rates&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;ENVIOCLICK&quot;</span>,
+      <span class="hljs-attr">&quot;services&quot;</span>: [
+        {
+          <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+          <span class="hljs-attr">&quot;serviceName&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>,
+          <span class="hljs-attr">&quot;estimatedDeliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+          <span class="hljs-attr">&quot;chargesDetail&quot;</span>: [
+            {
+              <span class="hljs-attr">&quot;concept&quot;</span>: <span class="hljs-string">&quot;Gasoline&quot;</span>,
+              <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-security">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="swagger-request-security-schema"></th>
+                        <th class="swagger-request-security-scopes"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="#security-definition-api_key">api_key</a>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Shipment" class="swagger-summary-tag" data-traverse-target="tag-Shipment">Shipment</h1>
+          <div id="operation--shipment-post" class="operation panel" data-traverse-target="operation--shipment-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Shipment">Shipment</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Shipment Request</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/shipment</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Send a package and return the guide in pdf format</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericShipmentRequest">GenericShipmentRequest</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Shipment Request Object</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-string">&quot;54321&quot;</span>,
+  <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+  <span class="hljs-attr">&quot;shipperInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;streetLines1&quot;</span>: <span class="hljs-string">&quot;Calle Estado de Tamaulipas #32 BIS&quot;</span>,
+    <span class="hljs-attr">&quot;neighborhood&quot;</span>: <span class="hljs-string">&quot;Providencia&quot;</span>,
+    <span class="hljs-attr">&quot;reference&quot;</span>: <span class="hljs-string">&quot;Fachada amarilla&quot;</span>,
+    <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;admin@cca.com&quot;</span>,
+    <span class="hljs-attr">&quot;phoneNumber&quot;</span>: <span class="hljs-string">&quot;5532782910&quot;</span>,
+    <span class="hljs-attr">&quot;corporateName&quot;</span>: <span class="hljs-string">&quot;go-sharp&quot;</span>,
+    <span class="hljs-attr">&quot;contactName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>
+  },
+  <span class="hljs-attr">&quot;recipientInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;streetLines1&quot;</span>: <span class="hljs-string">&quot;Calle Estado de Tamaulipas #32 BIS&quot;</span>,
+    <span class="hljs-attr">&quot;neighborhood&quot;</span>: <span class="hljs-string">&quot;Providencia&quot;</span>,
+    <span class="hljs-attr">&quot;reference&quot;</span>: <span class="hljs-string">&quot;Fachada amarilla&quot;</span>,
+    <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;admin@cca.com&quot;</span>,
+    <span class="hljs-attr">&quot;phoneNumber&quot;</span>: <span class="hljs-string">&quot;5532782910&quot;</span>,
+    <span class="hljs-attr">&quot;corporateName&quot;</span>: <span class="hljs-string">&quot;go-sharp&quot;</span>,
+    <span class="hljs-attr">&quot;contactName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>
+  },
+  <span class="hljs-attr">&quot;requestedShipments&quot;</span>: [
+    [
+      {
+        <span class="hljs-attr">&quot;shipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>
+      }
+    ]
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericShipmentResponse">GenericShipmentResponse</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>The server couldn&#39;t send a response</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">409 Conflict</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Invalid SharedAccessSignature in the provided SAS Connection String</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;childWaybills&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;waybillShipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130-1&quot;</span>,
+      <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/ENVIOCLICK/2019/11/2/789456132456.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;waybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+  <span class="hljs-attr">&quot;fileUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf&quot;</span>,
+  <span class="hljs-attr">&quot;masterWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX45789NUMBER1&quot;</span>,
+  <span class="hljs-attr">&quot;waybillId&quot;</span>: <span class="hljs-string">&quot;123SANDBOX45789NUMBER1&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-security">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="swagger-request-security-schema"></th>
+                        <th class="swagger-request-security-scopes"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="#security-definition-api_key">api_key</a>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Tracking" class="swagger-summary-tag" data-traverse-target="tag-Tracking">Tracking</h1>
+          <div id="operation--tracking-post" class="operation panel" data-traverse-target="operation--tracking-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Tracking">Tracking</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Tracking Request</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/tracking</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Get history for a shipment</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericTrackingRequest">GenericTrackingRequest</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Shipment Request Object</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+  <span class="hljs-attr">&quot;waybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>,
+  <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+  <span class="hljs-attr">&quot;mainWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER&quot;</span>,
+  <span class="hljs-attr">&quot;levelDetail&quot;</span>: <span class="hljs-string">&quot;LAST&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericTrackingResponse">GenericTrackingResponse</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Generic Rate Response</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">400 Bad Request</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>The server couldn&#39;t send a response</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;deliveryData&quot;</span>: {
+    <span class="hljs-attr">&quot;receiverName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>,
+    <span class="hljs-attr">&quot;deliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;relatedWaybill&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+    <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+    <span class="hljs-attr">&quot;mainWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>,
+    <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf&quot;</span>,
+    <span class="hljs-attr">&quot;waybillType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;podUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/pod_12390001.pdf&quot;</span>,
+    <span class="hljs-attr">&quot;podType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;childWaybills&quot;</span>: <span class="hljs-string">&quot;[{&apos;waybillShipmentId&apos;:&apos;EMB025_1&apos;, &apos;waybillNumber&apos;:&apos;076522264&apos;,&apos;waybillUrl&apos;:&apos;https://www.go-sharp.com.mx&apos;}]&quot;</span>,
+    <span class="hljs-attr">&quot;createdDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+    <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+    <span class="hljs-attr">&quot;rate&quot;</span>: <span class="hljs-string">&quot;Rate&quot;</span>
+  },
+  <span class="hljs-attr">&quot;events&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;DHL-DELIVERED&quot;</span>,
+      <span class="hljs-attr">&quot;courierMessage&quot;</span>: <span class="hljs-string">&quot;Paquete entregado&quot;</span>,
+      <span class="hljs-attr">&quot;action&quot;</span>: <span class="hljs-string">&quot;DELIVERED&quot;</span>,
+      <span class="hljs-attr">&quot;location&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+      <span class="hljs-attr">&quot;time&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-security">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="swagger-request-security-schema"></th>
+                        <th class="swagger-request-security-scopes"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="#security-definition-api_key">api_key</a>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1>Schema Definitions</h1>
+          <div id="definition-GenericRateObject" class="definition panel" data-traverse-target="definition-GenericRateObject">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericRateObject"></a>GenericRateObject: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="tenantId" class="has-description">
+                      <span class="json-property-name">tenantId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Customer tenantId</p>
+                    </dd>
+                    <dt data-property-name="packages">
+                      <span class="json-property-name">packages:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-RatePackage[]">
+                          <a class="json-schema-ref" href="#/definitions/RatePackage">RatePackage</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="shipperLocation" class="has-description">
+                      <span class="json-property-name">shipperLocation:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/RateLocation">RateLocation</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The necessary details of the shipper address for the quote</p>
+                    </dd>
+                    <dt data-property-name="recipientLocation" class="has-description">
+                      <span class="json-property-name">recipientLocation:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/RateLocation">RateLocation</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The necessary details of the recipient address for the quote</p>
+                    </dd>
+                    <dt data-property-name="preferredCouriers" class="has-description">
+                      <span class="json-property-name">preferredCouriers:</span>
+                      <span class="json-property-type">string[]</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">DHL</span>,
+                        <span class="json-property-enum-item">ESTAFETA</span>,
+                        <span class="json-property-enum-item">REDPACK</span>,
+                        <span class="json-property-enum-item">FEDEX</span>,
+                        <span class="json-property-enum-item">ENVIOCLICK</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Couriers to be quoted</p>
+                    </dd>
+                    <dt data-property-name="shipmentRateDetail" class="has-description">
+                      <span class="json-property-name">shipmentRateDetail:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/ShipmentRateDetail">ShipmentRateDetail</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Package delivery information</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+  <span class="hljs-attr">&quot;packages&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;packageInfo&quot;</span>: {
+        <span class="hljs-attr">&quot;weight&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;width&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;height&quot;</span>: <span class="hljs-number">5</span>
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;iPhone X&quot;</span>,
+      <span class="hljs-attr">&quot;customsValue&quot;</span>: <span class="hljs-number">200</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;shipperLocation&quot;</span>: {
+    <span class="hljs-attr">&quot;zipcode&quot;</span>: <span class="hljs-string">&quot;07550&quot;</span>,
+    <span class="hljs-attr">&quot;cityName&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+    <span class="hljs-attr">&quot;countryISOCode&quot;</span>: <span class="hljs-string">&quot;MX&quot;</span>
+  },
+  <span class="hljs-attr">&quot;recipientLocation&quot;</span>: {
+    <span class="hljs-attr">&quot;zipcode&quot;</span>: <span class="hljs-string">&quot;07550&quot;</span>,
+    <span class="hljs-attr">&quot;cityName&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+    <span class="hljs-attr">&quot;countryISOCode&quot;</span>: <span class="hljs-string">&quot;MX&quot;</span>
+  },
+  <span class="hljs-attr">&quot;preferredCouriers&quot;</span>: [
+    <span class="hljs-string">&quot;ENVIOCLICK&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;shipmentRateDetail&quot;</span>: {
+    <span class="hljs-attr">&quot;contentType&quot;</span>: <span class="hljs-string">&quot;DOCUMENTS&quot;</span>,
+    <span class="hljs-attr">&quot;dropOffType&quot;</span>: <span class="hljs-string">&quot;REGULAR_PICKUP&quot;</span>,
+    <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+    <span class="hljs-attr">&quot;insurance&quot;</span>: <span class="hljs-string">&quot;true&quot;</span>
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-RatePackage" class="definition panel" data-traverse-target="definition-RatePackage">
+            <h2 class="panel-title">
+              <a name="/definitions/RatePackage"></a>RatePackage: array
+              <!-- <span class="json-property-type"><span class="json-property-type">object[]</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-array-items">
+                  <span class="json-property-type">object</span>
+                  <span class="json-property-range" title="Value limits"></span>
+                  <div class="json-inner-schema">
+                    <section class="json-schema-properties">
+                      <dl>
+                        <dt data-property-name="packageInfo">
+                          <span class="json-property-name">packageInfo:</span>
+                          <span class="json-property-type">
+                            <span class="">
+                              <a class="json-schema-ref" href="#/definitions/RatePackageDimensions">RatePackageDimensions</a>
+                            </span>
+                          </span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dt data-property-name="description" class="has-description">
+                          <span class="json-property-name">description:</span>
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Packages description</p>
+                        </dd>
+                        <dt data-property-name="customsValue" class="has-description">
+                          <span class="json-property-name">customsValue:</span>
+                          <span class="json-property-type">number</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Specify the customs value in MXN</p>
+                        </dd>
+                      </dl>
+                    </section>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">[
+  {
+    <span class="hljs-attr">&quot;packageInfo&quot;</span>: {
+      <span class="hljs-attr">&quot;weight&quot;</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">&quot;width&quot;</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">&quot;height&quot;</span>: <span class="hljs-number">5</span>
+    },
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;iPhone X&quot;</span>,
+    <span class="hljs-attr">&quot;customsValue&quot;</span>: <span class="hljs-number">200</span>
+  }
+]
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-RatePackageDimensions" class="definition panel" data-traverse-target="definition-RatePackageDimensions">
+            <h2 class="panel-title">
+              <a name="/definitions/RatePackageDimensions"></a>RatePackageDimensions: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="weight" class="has-description">
+                      <span class="json-property-name">weight:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Package weight</p>
+                    </dd>
+                    <dt data-property-name="length" class="has-description">
+                      <span class="json-property-name">length:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Package length</p>
+                    </dd>
+                    <dt data-property-name="width" class="has-description">
+                      <span class="json-property-name">width:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Package width</p>
+                    </dd>
+                    <dt data-property-name="height" class="has-description">
+                      <span class="json-property-name">height:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Package height</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;weight&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;length&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;width&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;height&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-RateLocation" class="definition panel" data-traverse-target="definition-RateLocation">
+            <h2 class="panel-title">
+              <a name="/definitions/RateLocation"></a>RateLocation: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="zipcode">
+                      <span class="json-property-name">zipcode:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="cityName">
+                      <span class="json-property-name">cityName:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="countryISOCode">
+                      <span class="json-property-name">countryISOCode:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;zipcode&quot;</span>: <span class="hljs-string">&quot;07550&quot;</span>,
+  <span class="hljs-attr">&quot;cityName&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+  <span class="hljs-attr">&quot;countryISOCode&quot;</span>: <span class="hljs-string">&quot;MX&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ShipmentRateDetail" class="definition panel" data-traverse-target="definition-ShipmentRateDetail">
+            <h2 class="panel-title">
+              <a name="/definitions/ShipmentRateDetail"></a>ShipmentRateDetail: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="contentType" class="has-description">
+                      <span class="json-property-name">contentType:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">DOCUMENTS</span>,
+                        <span class="json-property-enum-item">NON_DOCUMENTS</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Type of content</p>
+                    </dd>
+                    <dt data-property-name="dropOffType" class="has-description">
+                      <span class="json-property-name">dropOffType:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">REGULAR_PICKUP</span>,
+                        <span class="json-property-enum-item">REQUEST_COURIER</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Type of delivery</p>
+                    </dd>
+                    <dt data-property-name="currency" class="has-description">
+                      <span class="json-property-name">currency:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">MXN</span>,
+                        <span class="json-property-enum-item">USD</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Shipment currency</p>
+                    </dd>
+                    <dt data-property-name="insurance" class="has-description">
+                      <span class="json-property-name">insurance:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Indicates if the package is going to be insured</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;contentType&quot;</span>: <span class="hljs-string">&quot;DOCUMENTS&quot;</span>,
+  <span class="hljs-attr">&quot;dropOffType&quot;</span>: <span class="hljs-string">&quot;REGULAR_PICKUP&quot;</span>,
+  <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+  <span class="hljs-attr">&quot;insurance&quot;</span>: <span class="hljs-string">&quot;true&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericShipmentRequest" class="definition panel" data-traverse-target="definition-GenericShipmentRequest">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericShipmentRequest"></a>GenericShipmentRequest: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="tenantId" class="has-description">
+                      <span class="json-property-name">tenantId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Customer tenantId</p>
+                    </dd>
+                    <dt data-property-name="rateId" class="has-description">
+                      <span class="json-property-name">rateId:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>idRate that identify the rate previous consuming of the quotation web service.</p>
+                    </dd>
+                    <dt data-property-name="shipperInfo" class="has-description">
+                      <span class="json-property-name">shipperInfo:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericContactInfo">GenericContactInfo</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The necessary details of the shipper address for the quote</p>
+                    </dd>
+                    <dt data-property-name="recipientInfo" class="has-description">
+                      <span class="json-property-name">recipientInfo:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GenericContactInfo">GenericContactInfo</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The necessary details of the recipient address for the quote</p>
+                    </dd>
+                    <dt data-property-name="requestedShipments">
+                      <span class="json-property-name">requestedShipments:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/GenericRequestedShipment">GenericRequestedShipment</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-array-items">
+                        <span class="json-property-type">
+                          <span class="">
+                            <a class="json-schema-ref" href="#/definitions/GenericRequestedShipment">GenericRequestedShipment</a>
+                          </span>
+                        </span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <div class="json-inner-schema"> </div>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-string">&quot;54321&quot;</span>,
+  <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+  <span class="hljs-attr">&quot;shipperInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;streetLines1&quot;</span>: <span class="hljs-string">&quot;Calle Estado de Tamaulipas #32 BIS&quot;</span>,
+    <span class="hljs-attr">&quot;neighborhood&quot;</span>: <span class="hljs-string">&quot;Providencia&quot;</span>,
+    <span class="hljs-attr">&quot;reference&quot;</span>: <span class="hljs-string">&quot;Fachada amarilla&quot;</span>,
+    <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;admin@cca.com&quot;</span>,
+    <span class="hljs-attr">&quot;phoneNumber&quot;</span>: <span class="hljs-string">&quot;5532782910&quot;</span>,
+    <span class="hljs-attr">&quot;corporateName&quot;</span>: <span class="hljs-string">&quot;go-sharp&quot;</span>,
+    <span class="hljs-attr">&quot;contactName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>
+  },
+  <span class="hljs-attr">&quot;recipientInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;streetLines1&quot;</span>: <span class="hljs-string">&quot;Calle Estado de Tamaulipas #32 BIS&quot;</span>,
+    <span class="hljs-attr">&quot;neighborhood&quot;</span>: <span class="hljs-string">&quot;Providencia&quot;</span>,
+    <span class="hljs-attr">&quot;reference&quot;</span>: <span class="hljs-string">&quot;Fachada amarilla&quot;</span>,
+    <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;admin@cca.com&quot;</span>,
+    <span class="hljs-attr">&quot;phoneNumber&quot;</span>: <span class="hljs-string">&quot;5532782910&quot;</span>,
+    <span class="hljs-attr">&quot;corporateName&quot;</span>: <span class="hljs-string">&quot;go-sharp&quot;</span>,
+    <span class="hljs-attr">&quot;contactName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>
+  },
+  <span class="hljs-attr">&quot;requestedShipments&quot;</span>: [
+    [
+      {
+        <span class="hljs-attr">&quot;shipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>
+      }
+    ]
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericContactInfo" class="definition panel" data-traverse-target="definition-GenericContactInfo">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericContactInfo"></a>GenericContactInfo: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="streetLines1" class="has-description">
+                      <span class="json-property-name">streetLines1:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>The name of the street with number</p>
+                    </dd>
+                    <dt data-property-name="neighborhood">
+                      <span class="json-property-name">neighborhood:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="reference" class="has-description">
+                      <span class="json-property-name">reference:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Reference to make finding your home easier</p>
+                    </dd>
+                    <dt data-property-name="email">
+                      <span class="json-property-name">email:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="phoneNumber">
+                      <span class="json-property-name">phoneNumber:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="corporateName">
+                      <span class="json-property-name">corporateName:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="contactName" class="has-description">
+                      <span class="json-property-name">contactName:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Contact name to who the package will be delivered</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;streetLines1&quot;</span>: <span class="hljs-string">&quot;Calle Estado de Tamaulipas #32 BIS&quot;</span>,
+  <span class="hljs-attr">&quot;neighborhood&quot;</span>: <span class="hljs-string">&quot;Providencia&quot;</span>,
+  <span class="hljs-attr">&quot;reference&quot;</span>: <span class="hljs-string">&quot;Fachada amarilla&quot;</span>,
+  <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;admin@cca.com&quot;</span>,
+  <span class="hljs-attr">&quot;phoneNumber&quot;</span>: <span class="hljs-string">&quot;5532782910&quot;</span>,
+  <span class="hljs-attr">&quot;corporateName&quot;</span>: <span class="hljs-string">&quot;go-sharp&quot;</span>,
+  <span class="hljs-attr">&quot;contactName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericRequestedShipment" class="definition panel" data-traverse-target="definition-GenericRequestedShipment">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericRequestedShipment"></a>GenericRequestedShipment: array
+              <!-- <span class="json-property-type"><span class="json-property-type">object[]</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-array-items">
+                  <span class="json-property-type">object</span>
+                  <span class="json-property-range" title="Value limits"></span>
+                  <div class="json-inner-schema">
+                    <section class="json-schema-properties">
+                      <dl>
+                        <dt data-property-name="shipmentId" class="has-description">
+                          <span class="json-property-name">shipmentId:</span>
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>idOrder number to be generated</p>
+                        </dd>
+                      </dl>
+                    </section>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">[
+  {
+    <span class="hljs-attr">&quot;shipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>
+  }
+]
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericTrackingRequest" class="definition panel" data-traverse-target="definition-GenericTrackingRequest">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericTrackingRequest"></a>GenericTrackingRequest: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="tenantId" class="has-description">
+                      <span class="json-property-name">tenantId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Customer tenantId</p>
+                    </dd>
+                    <dt data-property-name="waybillNumber" class="has-description">
+                      <span class="json-property-name">waybillNumber:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Waybillnumber to be tracked</p>
+                    </dd>
+                    <dt data-property-name="externalId" class="has-description">
+                      <span class="json-property-name">externalId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>idRate that identifies the internal id of a net guide</p>
+                    </dd>
+                    <dt data-property-name="mainWaybillNumber" class="has-description">
+                      <span class="json-property-name">mainWaybillNumber:</span>
+                      <span class="json-property-type">123SANDBOX456TRACK789NUMBER</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Mother guide in case of multipackage</p>
+                    </dd>
+                    <dt data-property-name="levelDetail" class="has-description">
+                      <span class="json-property-name">levelDetail:</span>
+                      <span class="json-property-type">string[]</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">ALL</span>,
+                        <span class="json-property-enum-item">LAST</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dd>
+                      <p>Gets the history depending on the desired level</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+  <span class="hljs-attr">&quot;waybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>,
+  <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+  <span class="hljs-attr">&quot;mainWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER&quot;</span>,
+  <span class="hljs-attr">&quot;levelDetail&quot;</span>: <span class="hljs-string">&quot;LAST&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericRateResponse" class="definition panel" data-traverse-target="definition-GenericRateResponse">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericRateResponse"></a>GenericRateResponse: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="rates">
+                      <span class="json-property-name">rates:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/CourierRate">CourierRate</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-array-items">
+                        <span class="json-property-type">
+                          <span class="">
+                            <a class="json-schema-ref" href="#/definitions/CourierRate">CourierRate</a>
+                          </span>
+                        </span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <div class="json-inner-schema"> </div>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;rates&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;ENVIOCLICK&quot;</span>,
+      <span class="hljs-attr">&quot;services&quot;</span>: [
+        {
+          <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+          <span class="hljs-attr">&quot;serviceName&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>,
+          <span class="hljs-attr">&quot;estimatedDeliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+          <span class="hljs-attr">&quot;chargesDetail&quot;</span>: [
+            {
+              <span class="hljs-attr">&quot;concept&quot;</span>: <span class="hljs-string">&quot;Gasoline&quot;</span>,
+              <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-CourierRate" class="definition panel" data-traverse-target="definition-CourierRate">
+            <h2 class="panel-title">
+              <a name="/definitions/CourierRate"></a>CourierRate: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="name" class="has-description">
+                      <span class="json-property-name">name:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Courier name</p>
+                    </dd>
+                    <dt data-property-name="services">
+                      <span class="json-property-name">services:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/RateCourierServiceType">RateCourierServiceType</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;ENVIOCLICK&quot;</span>,
+  <span class="hljs-attr">&quot;services&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+      <span class="hljs-attr">&quot;serviceName&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>,
+      <span class="hljs-attr">&quot;estimatedDeliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+      <span class="hljs-attr">&quot;chargesDetail&quot;</span>: [
+        {
+          <span class="hljs-attr">&quot;concept&quot;</span>: <span class="hljs-string">&quot;Gasoline&quot;</span>,
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>
+        }
+      ]
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-RateCourierServiceType" class="definition panel" data-traverse-target="definition-RateCourierServiceType">
+            <h2 class="panel-title">
+              <a name="/definitions/RateCourierServiceType"></a>RateCourierServiceType: array
+              <!-- <span class="json-property-type"><span class="json-property-type">object[]</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-array-items">
+                  <span class="json-property-type">object</span>
+                  <span class="json-property-range" title="Value limits"></span>
+                  <div class="json-inner-schema">
+                    <section class="json-schema-properties">
+                      <dl>
+                        <dt data-property-name="rateId" class="has-description">
+                          <span class="json-property-name">rateId:</span>
+                          <span class="json-property-type">number</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Id that identifies the rate</p>
+                        </dd>
+                        <dt data-property-name="serviceName" class="has-description">
+                          <span class="json-property-name">serviceName:</span>
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Courier service name</p>
+                        </dd>
+                        <dt data-property-name="currency" class="has-description">
+                          <span class="json-property-name">currency:</span>
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Service currency</p>
+                        </dd>
+                        <dt data-property-name="amount" class="has-description">
+                          <span class="json-property-name">amount:</span>
+                          <span class="json-property-type">number</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Total delivery amount</p>
+                        </dd>
+                        <dt data-property-name="estimatedDeliveryDate" class="has-description">
+                          <span class="json-property-name">estimatedDeliveryDate:</span>
+                          <span class="json-property-type">string</span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dd>
+                          <p>Estimated delivery date</p>
+                        </dd>
+                        <dt data-property-name="chargesDetail">
+                          <span class="json-property-name">chargesDetail:</span>
+                          <span class="json-property-type">
+                            <span class="json-schema-ref-array">
+                              <a class="json-schema-ref" href="#/definitions/ChargesDetail">ChargesDetail</a>
+                            </span>
+                          </span>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </dt>
+                        <dt class="json-inner-schema">
+                          <section class="json-schema-array-items">
+                            <span class="json-property-type">
+                              <span class="">
+                                <a class="json-schema-ref" href="#/definitions/ChargesDetail">ChargesDetail</a>
+                              </span>
+                            </span>
+                            <span class="json-property-range" title="Value limits"></span>
+                            <div class="json-inner-schema"> </div>
+                          </section>
+                        </dt>
+                      </dl>
+                    </section>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">[
+  {
+    <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+    <span class="hljs-attr">&quot;serviceName&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;MXN&quot;</span>,
+    <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>,
+    <span class="hljs-attr">&quot;estimatedDeliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+    <span class="hljs-attr">&quot;chargesDetail&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;concept&quot;</span>: <span class="hljs-string">&quot;Gasoline&quot;</span>,
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>
+      }
+    ]
+  }
+]
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ChargesDetail" class="definition panel" data-traverse-target="definition-ChargesDetail">
+            <h2 class="panel-title">
+              <a name="/definitions/ChargesDetail"></a>ChargesDetail: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="concept" class="has-description">
+                      <span class="json-property-name">concept:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Concept name</p>
+                    </dd>
+                    <dt data-property-name="amount" class="has-description">
+                      <span class="json-property-name">amount:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Charge amount</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;concept&quot;</span>: <span class="hljs-string">&quot;Gasoline&quot;</span>,
+  <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">553.68</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericShipmentResponse" class="definition panel" data-traverse-target="definition-GenericShipmentResponse">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericShipmentResponse"></a>GenericShipmentResponse: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="childWaybills">
+                      <span class="json-property-name">childWaybills:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/ChildWaybill">ChildWaybill</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-array-items">
+                        <span class="json-property-type">
+                          <span class="">
+                            <a class="json-schema-ref" href="#/definitions/ChildWaybill">ChildWaybill</a>
+                          </span>
+                        </span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <div class="json-inner-schema"> </div>
+                      </section>
+                    </dt>
+                    <dt data-property-name="externalId" class="has-description">
+                      <span class="json-property-name">externalId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>External id generated</p>
+                    </dd>
+                    <dt data-property-name="fileUrl" class="has-description">
+                      <span class="json-property-name">fileUrl:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Link to pdf hosted in azure-storage</p>
+                    </dd>
+                    <dt data-property-name="masterWaybillNumber" class="has-description">
+                      <span class="json-property-name">masterWaybillNumber:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>waybillId generated that identifies the guide in case of multipackage</p>
+                    </dd>
+                    <dt data-property-name="waybillId" class="has-description">
+                      <span class="json-property-name">waybillId:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>waybillId generated that identifies the guide</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;childWaybills&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;waybillShipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130-1&quot;</span>,
+      <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/ENVIOCLICK/2019/11/2/789456132456.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;waybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+  <span class="hljs-attr">&quot;fileUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf&quot;</span>,
+  <span class="hljs-attr">&quot;masterWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX45789NUMBER1&quot;</span>,
+  <span class="hljs-attr">&quot;waybillId&quot;</span>: <span class="hljs-string">&quot;123SANDBOX45789NUMBER1&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ChildWaybill" class="definition panel" data-traverse-target="definition-ChildWaybill">
+            <h2 class="panel-title">
+              <a name="/definitions/ChildWaybill"></a>ChildWaybill: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="waybillShipmentId" class="has-description">
+                      <span class="json-property-name">waybillShipmentId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>waybillShipmentId that relates to the order external id</p>
+                    </dd>
+                    <dt data-property-name="waybillUrl" class="has-description">
+                      <span class="json-property-name">waybillUrl:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Link to pdf hosted in azure-storage</p>
+                    </dd>
+                    <dt data-property-name="waybillNumber" class="has-description">
+                      <span class="json-property-name">waybillNumber:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>waybillNumber identifies the child guide in case of multipackage</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;waybillShipmentId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130-1&quot;</span>,
+  <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/ENVIOCLICK/2019/11/2/789456132456.pdf&quot;</span>,
+  <span class="hljs-attr">&quot;waybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GenericTrackingResponse" class="definition panel" data-traverse-target="definition-GenericTrackingResponse">
+            <h2 class="panel-title">
+              <a name="/definitions/GenericTrackingResponse"></a>GenericTrackingResponse: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="deliveryData">
+                      <span class="json-property-name">deliveryData:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/DeliveryData">DeliveryData</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="relatedWaybill">
+                      <span class="json-property-name">relatedWaybill:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Waybill">Waybill</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="events">
+                      <span class="json-property-name">events:</span>
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/CourierEvent">CourierEvent</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-array-items">
+                        <span class="json-property-type">
+                          <span class="">
+                            <a class="json-schema-ref" href="#/definitions/CourierEvent">CourierEvent</a>
+                          </span>
+                        </span>
+                        <span class="json-property-range" title="Value limits"></span>
+                        <div class="json-inner-schema"> </div>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;deliveryData&quot;</span>: {
+    <span class="hljs-attr">&quot;receiverName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>,
+    <span class="hljs-attr">&quot;deliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;relatedWaybill&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+    <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+    <span class="hljs-attr">&quot;mainWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>,
+    <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf&quot;</span>,
+    <span class="hljs-attr">&quot;waybillType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;podUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/pod_12390001.pdf&quot;</span>,
+    <span class="hljs-attr">&quot;podType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;childWaybills&quot;</span>: <span class="hljs-string">&quot;[{&apos;waybillShipmentId&apos;:&apos;EMB025_1&apos;, &apos;waybillNumber&apos;:&apos;076522264&apos;,&apos;waybillUrl&apos;:&apos;https://www.go-sharp.com&apos;}]&quot;</span>,
+    <span class="hljs-attr">&quot;createdDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+    <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+    <span class="hljs-attr">&quot;rate&quot;</span>: <span class="hljs-string">&quot;Rate&quot;</span>
+  },
+  <span class="hljs-attr">&quot;events&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;DHL-DELIVERED&quot;</span>,
+      <span class="hljs-attr">&quot;courierMessage&quot;</span>: <span class="hljs-string">&quot;Paquete entregado&quot;</span>,
+      <span class="hljs-attr">&quot;action&quot;</span>: <span class="hljs-string">&quot;DELIVERED&quot;</span>,
+      <span class="hljs-attr">&quot;location&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+      <span class="hljs-attr">&quot;time&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+    }
+  ]
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-DeliveryData" class="definition panel" data-traverse-target="definition-DeliveryData">
+            <h2 class="panel-title">
+              <a name="/definitions/DeliveryData"></a>DeliveryData: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="receiverName" class="has-description">
+                      <span class="json-property-name">receiverName:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Person name who will receive the package</p>
+                    </dd>
+                    <dt data-property-name="deliveryDate" class="has-description">
+                      <span class="json-property-name">deliveryDate:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Estimated date of delivery</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;receiverName&quot;</span>: <span class="hljs-string">&quot;Alejandro V&#xE1;zquez&quot;</span>,
+  <span class="hljs-attr">&quot;deliveryDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Waybill" class="definition panel" data-traverse-target="definition-Waybill">
+            <h2 class="panel-title">
+              <a name="/definitions/Waybill"></a>Waybill: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="id" class="has-description">
+                      <span class="json-property-name">id:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Id that identifies the waybill</p>
+                    </dd>
+                    <dt data-property-name="rateId" class="has-description">
+                      <span class="json-property-name">rateId:</span>
+                      <span class="json-property-type">number</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Id that identifies the rate</p>
+                    </dd>
+                    <dt data-property-name="externalId" class="has-description">
+                      <span class="json-property-name">externalId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The external identifier number</p>
+                    </dd>
+                    <dt data-property-name="mainWaybillNumber" class="has-description">
+                      <span class="json-property-name">mainWaybillNumber:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The main waybil number</p>
+                    </dd>
+                    <dt data-property-name="waybillUrl" class="has-description">
+                      <span class="json-property-name">waybillUrl:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The waybill url for storage</p>
+                    </dd>
+                    <dt data-property-name="waybillType" class="has-description">
+                      <span class="json-property-name">waybillType:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Waybill type</p>
+                    </dd>
+                    <dt data-property-name="podUrl" class="has-description">
+                      <span class="json-property-name">podUrl:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>POD url</p>
+                    </dd>
+                    <dt data-property-name="podType" class="has-description">
+                      <span class="json-property-name">podType:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>POD type</p>
+                    </dd>
+                    <dt data-property-name="childWaybills" class="has-description">
+                      <span class="json-property-name">childWaybills:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The json object for all multiple waybills</p>
+                    </dd>
+                    <dt data-property-name="createdDate" class="has-description">
+                      <span class="json-property-name">createdDate:</span>
+                      <span class="json-property-type">Date</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The created date for the waybill</p>
+                    </dd>
+                    <dt data-property-name="tenantId" class="has-description">
+                      <span class="json-property-name">tenantId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The tenant for the client</p>
+                    </dd>
+                    <dt data-property-name="rate" class="has-description">
+                      <span class="json-property-name">rate:</span>
+                      <span class="json-property-type">Rate</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Related rate</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">&quot;rateId&quot;</span>: <span class="hljs-number">1013</span>,
+  <span class="hljs-attr">&quot;externalId&quot;</span>: <span class="hljs-string">&quot;ORD-TEP130-0130&quot;</span>,
+  <span class="hljs-attr">&quot;mainWaybillNumber&quot;</span>: <span class="hljs-string">&quot;123SANDBOX456TRACK789NUMBER1&quot;</span>,
+  <span class="hljs-attr">&quot;waybillUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf&quot;</span>,
+  <span class="hljs-attr">&quot;waybillType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;podUrl&quot;</span>: <span class="hljs-string">&quot;https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/pod_12390001.pdf&quot;</span>,
+  <span class="hljs-attr">&quot;podType&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;childWaybills&quot;</span>: <span class="hljs-string">&quot;[{&apos;waybillShipmentId&apos;:&apos;EMB025_1&apos;, &apos;waybillNumber&apos;:&apos;076522264&apos;,&apos;waybillUrl&apos;:&apos;https://www.go-sharp.com&apos;}]&quot;</span>,
+  <span class="hljs-attr">&quot;createdDate&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>,
+  <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-number">54321</span>,
+  <span class="hljs-attr">&quot;rate&quot;</span>: <span class="hljs-string">&quot;Rate&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-CourierEvent" class="definition panel" data-traverse-target="definition-CourierEvent">
+            <h2 class="panel-title">
+              <a name="/definitions/CourierEvent"></a>CourierEvent: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="code" class="has-description">
+                      <span class="json-property-name">code:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Event identification code</p>
+                    </dd>
+                    <dt data-property-name="courierMessage" class="has-description">
+                      <span class="json-property-name">courierMessage:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Event detail</p>
+                    </dd>
+                    <dt data-property-name="action" class="has-description">
+                      <span class="json-property-name">action:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Event action</p>
+                    </dd>
+                    <dt data-property-name="location" class="has-description">
+                      <span class="json-property-name">location:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Location where the event occurred</p>
+                    </dd>
+                    <dt data-property-name="time" class="has-description">
+                      <span class="json-property-name">time:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Time at which the event occurred</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-string">&quot;DHL-DELIVERED&quot;</span>,
+  <span class="hljs-attr">&quot;courierMessage&quot;</span>: <span class="hljs-string">&quot;Paquete entregado&quot;</span>,
+  <span class="hljs-attr">&quot;action&quot;</span>: <span class="hljs-string">&quot;DELIVERED&quot;</span>,
+  <span class="hljs-attr">&quot;location&quot;</span>: <span class="hljs-string">&quot;Ciudad de M&#xE9;xico&quot;</span>,
+  <span class="hljs-attr">&quot;time&quot;</span>: <span class="hljs-string">&quot;2020-01-11T00:29:38.844Z&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="doc-row no-margin">
+            <div class="doc-copy doc-separator">
+              <a class="powered-by" href="https://sourcey.com/spectacle">Documentation by
+                <span>Spectacle</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

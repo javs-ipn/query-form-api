@@ -1,0 +1,742 @@
+{
+    "swagger": "2.0",
+    "host": "localhost:3000",
+    "info": {
+        "title": "Courier Connection Api",
+        "description": "Rest api to request waybills to different delivery services such as ESTAFETA, DHL, FEDEX, REDPACK, PAQUETEEXPRESS.",
+        "version": "1.14.1"
+    },
+    "basePath": "/api",
+    "consumes": [
+        "application/json",
+        "application/xml"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "securityDefinitions": {},
+    "tags": [
+        {
+            "name": "Rate",
+            "description": ""
+        },
+        {
+            "name": "Shipment",
+            "description": ""
+        },
+        {
+            "name": "Tracking",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/rate": {
+            "post": {
+                "tags": [
+                    "Rate"
+                ],
+                "summary": "Rate Request",
+                "description": "Get quotation for a shipment",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Rate object required to quote",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GenericRateObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/GenericRateResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "The server couldn't send a response"
+                    },
+                    "409": {
+                        "description": "Not found credential with courierId: 1 tenant: 54321 and credential type: RATE"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/shipment": {
+            "post": {
+                "tags": [
+                    "Shipment"
+                ],
+                "summary": "Shipment Request",
+                "description": "Send a package and return the guide in pdf format",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Shipment Request Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GenericShipmentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/GenericShipmentResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "The server couldn't send a response"
+                    },
+                    "409": {
+                        "description": "Invalid SharedAccessSignature in the provided SAS Connection String"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/tracking": {
+            "post": {
+                "tags": [
+                    "Tracking"
+                ],
+                "summary": "Tracking Request",
+                "description": "Get history for a shipment",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Shipment Request Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GenericTrackingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generic Rate Response",
+                        "schema": {
+                            "$ref": "#/definitions/GenericTrackingResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "The server couldn't send a response"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "GenericRateObject": {
+            "type": "object",
+            "required": [
+                "tenantId",
+                "packages",
+                "shipperLocation",
+                "recipientLocation",
+                "preferredCouriers",
+                "shipmentRateDetail"
+            ],
+            "properties": {
+                "tenantId": {
+                    "description": "Customer tenantId",
+                    "type": "string",
+                    "example": 54321
+                },
+                "packages": {
+                    "type": "RatePackage[]",
+                    "$ref": "#/definitions/RatePackage"
+                },
+                "shipperLocation": {
+                    "description": "The necessary details of the shipper address for the quote",
+                    "$ref": "#/definitions/RateLocation"
+                },
+                "recipientLocation": {
+                    "description": "The necessary details of the recipient address for the quote",
+                    "$ref": "#/definitions/RateLocation"
+                },
+                "preferredCouriers": {
+                    "description": "Couriers to be quoted",
+                    "type": "string[]",
+                    "enum": [
+                        "DHL",
+                        "ESTAFETA",
+                        "REDPACK",
+                        "FEDEX",
+                        "ENVIOCLICK"
+                    ],
+                    "example": [
+                        "ENVIOCLICK"
+                    ]
+                },
+                "shipmentRateDetail": {
+                    "description": "Package delivery information",
+                    "$ref": "#/definitions/ShipmentRateDetail"
+                }
+            },
+            "json": {
+                "name": "GenericRateObject"
+            }
+        },
+        "RatePackage": {
+            "type": "array",
+            "required": [
+                "packageInfo",
+                "description",
+                "customsValue"
+            ],
+            "items": {
+                "properties": {
+                    "packageInfo": {
+                        "$ref": "#/definitions/RatePackageDimensions"
+                    },
+                    "description": {
+                        "description": "Packages description",
+                        "type": "string",
+                        "example": "iPhone X"
+                    },
+                    "customsValue": {
+                        "description": "Specify the customs value in MXN",
+                        "type": "number",
+                        "example": 200
+                    }
+                }
+            },
+            "json": {
+                "name": "RatePackage"
+            }
+        },
+        "RatePackageDimensions": {
+            "type": "object",
+            "required": [
+                "weight",
+                "length",
+                "width",
+                "height"
+            ],
+            "properties": {
+                "weight": {
+                    "description": "Package weight",
+                    "type": "number",
+                    "example": 5
+                },
+                "length": {
+                    "description": "Package length",
+                    "type": "number",
+                    "example": 5
+                },
+                "width": {
+                    "description": "Package width",
+                    "type": "number",
+                    "example": 5
+                },
+                "height": {
+                    "description": "Package height",
+                    "type": "number",
+                    "example": 5
+                }
+            },
+            "json": {
+                "name": "RatePackage"
+            }
+        },
+        "RateLocation": {
+            "type": "object",
+            "required": [
+                "zipcode",
+                "cityName",
+                "countryISOCode"
+            ],
+            "properties": {
+                "zipcode": {
+                    "type": "string",
+                    "example": "07550"
+                },
+                "cityName": {
+                    "type": "string",
+                    "example": "Ciudad de México"
+                },
+                "countryISOCode": {
+                    "type": "string",
+                    "example": "MX"
+                }
+            },
+            "json": {
+                "name": "RateLocation"
+            }
+        },
+        "ShipmentRateDetail": {
+            "type": "object",
+            "required": [
+                "contentType",
+                "dropOffType",
+                "currency",
+                "insurance"
+            ],
+            "properties": {
+                "contentType": {
+                    "description": "Type of content",
+                    "type": "string",
+                    "enum": [
+                        "DOCUMENTS",
+                        "NON_DOCUMENTS"
+                    ],
+                    "example": "DOCUMENTS"
+                },
+                "dropOffType": {
+                    "description": "Type of delivery",
+                    "type": "string",
+                    "enum": [
+                        "REGULAR_PICKUP",
+                        "REQUEST_COURIER"
+                    ],
+                    "example": "REGULAR_PICKUP"
+                },
+                "currency": {
+                    "description": "Shipment currency",
+                    "type": "string",
+                    "enum": [
+                        "MXN",
+                        "USD"
+                    ],
+                    "example": "MXN"
+                },
+                "insurance": {
+                    "description": "Indicates if the package is going to be insured",
+                    "type": "boolean",
+                    "example": "true"
+                }
+            },
+            "json": {
+                "name": "RateLocation"
+            }
+        },
+        "GenericShipmentRequest": {
+            "type": "object",
+            "required": [
+                "tenantId",
+                "rateId",
+                "shipperInfo",
+                "recipientInfo",
+                "requestedShipments"
+            ],
+            "properties": {
+                "tenantId": {
+                    "description": "Customer tenantId",
+                    "type": "string",
+                    "example": "54321"
+                },
+                "rateId": {
+                    "description": "idRate that identify the rate  previous consuming of the quotation web service.",
+                    "type": "number",
+                    "example": 1013
+                },
+                "shipperInfo": {
+                    "description": "The necessary details of the shipper address for the quote",
+                    "$ref": "#/definitions/GenericContactInfo"
+                },
+                "recipientInfo": {
+                    "description": "The necessary details of the recipient address for the quote",
+                    "$ref": "#/definitions/GenericContactInfo"
+                },
+                "requestedShipments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GenericRequestedShipment"
+                    }
+                }
+            }
+        },
+        "GenericContactInfo": {
+            "type": "object",
+            "required": [
+                "streetLines1",
+                "neighborhood",
+                "reference",
+                "email",
+                "phoneNumber",
+                "corporateName",
+                "contactName"
+            ],
+            "properties": {
+                "streetLines1": {
+                    "description": "The name of the street with number",
+                    "type": "string",
+                    "example": "Calle Estado de Tamaulipas #32 BIS"
+                },
+                "neighborhood": {
+                    "type": "string",
+                    "example": "Providencia"
+                },
+                "reference": {
+                    "description": "Reference to make finding your home easier",
+                    "type": "string",
+                    "example": "Fachada amarilla"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "admin@cca.com"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "5532782910"
+                },
+                "corporateName": {
+                    "type": "string",
+                    "example": "go-sharp"
+                },
+                "contactName": {
+                    "description": "Contact name to who the package will be delivered",
+                    "type": "string",
+                    "example": "Alejandro Vázquez"
+                }
+            }
+        },
+        "GenericRequestedShipment": {
+            "type": "array",
+            "required": [
+                "shipmentId"
+            ],
+            "items": {
+                "properties": {
+                    "shipmentId": {
+                        "description": "idOrder number to be generated",
+                        "type": "string",
+                        "example": "ORD-TEP130-0130"
+                    }
+                }
+            }
+        },
+        "GenericTrackingRequest": {
+            "type": "object",
+            "required": [
+                "tenantId",
+                "waybillNumber",
+                "externalId",
+                "levelDetail"
+            ],
+            "properties": {
+                "tenantId": {
+                    "description": "Customer tenantId",
+                    "type": "string",
+                    "example": 54321
+                },
+                "waybillNumber": {
+                    "description": "Waybillnumber to be tracked",
+                    "type": "string",
+                    "example": "123SANDBOX456TRACK789NUMBER1"
+                },
+                "externalId": {
+                    "description": "idRate that identifies the internal id of a net guide",
+                    "type": "string",
+                    "example": "ORD-TEP130-0130"
+                },
+                "mainWaybillNumber": {
+                    "description": "Mother guide in case of multipackage",
+                    "type": "123SANDBOX456TRACK789NUMBER"
+                },
+                "levelDetail": {
+                    "description": "Gets the history depending on the desired level",
+                    "type": "string[]",
+                    "enum": [
+                        "ALL",
+                        "LAST"
+                    ],
+                    "example": "LAST"
+                }
+            }
+        },
+        "GenericRateResponse": {
+            "type": "object",
+            "required": [
+                "rates"
+            ],
+            "properties": {
+                "rates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CourierRate"
+                    }
+                }
+            }
+        },
+        "CourierRate": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Courier name",
+                    "example": "ENVIOCLICK"
+                },
+                "services": {
+                    "type": "array",
+                    "$ref": "#/definitions/RateCourierServiceType"
+                }
+            }
+        },
+        "RateCourierServiceType": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "rateId": {
+                        "type": "number",
+                        "description": "Id that identifies the rate",
+                        "example": 1013,
+                        "serviceName": "ENVIOCLICK"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Courier service name",
+                        "service": "ENVIOCLICK"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "description": "Service currency",
+                        "example": "MXN"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Total delivery amount",
+                        "example": 553.68
+                    },
+                    "estimatedDeliveryDate": {
+                        "type": "string",
+                        "description": "Estimated delivery date",
+                        "example": "2020-01-11T00:29:38.844Z"
+                    },
+                    "chargesDetail": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/ChargesDetail"
+                        }
+                    }
+                }
+            }
+        },
+        "ChargesDetail": {
+            "type": "object",
+            "properties": {
+                "concept": {
+                    "type": "string",
+                    "description": "Concept name",
+                    "example": "Gasoline"
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "Charge amount",
+                    "example": 553.68
+                }
+            }
+        },
+        "GenericShipmentResponse": {
+            "type": "object",
+            "properties": {
+                "childWaybills": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ChildWaybill"
+                    }
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "External id generated",
+                    "example": "ORD-TEP130-0130"
+                },
+                "fileUrl": {
+                    "type": "string",
+                    "description": "Link to pdf hosted in azure-storage",
+                    "example": "https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf"
+                },
+                "masterWaybillNumber": {
+                    "type": "string",
+                    "description": "waybillId generated that identifies the guide in case of multipackage",
+                    "example": "123SANDBOX45789NUMBER1"
+                },
+                "waybillId": {
+                    "type": "number",
+                    "description": "waybillId generated that identifies the guide",
+                    "example": "123SANDBOX45789NUMBER1"
+                }
+            }
+        },
+        "ChildWaybill": {
+            "type": "object",
+            "properties": {
+                "waybillShipmentId": {
+                    "type": "string",
+                    "description": "waybillShipmentId that relates to the order external id",
+                    "example": "ORD-TEP130-0130-1"
+                },
+                "waybillUrl": {
+                    "type": "string",
+                    "description": "Link to pdf hosted in azure-storage",
+                    "example": "https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/ENVIOCLICK/2019/11/2/789456132456.pdf"
+                },
+                "waybillNumber": {
+                    "type": "string",
+                    "description": "waybillNumber identifies the child guide in case of multipackage",
+                    "example": "123SANDBOX456TRACK789NUMBER1"
+                }
+            }
+        },
+        "GenericTrackingResponse": {
+            "type": "object",
+            "properties": {
+                "deliveryData": {
+                    "$ref": "#/definitions/DeliveryData"
+                },
+                "relatedWaybill": {
+                    "$ref": "#/definitions/Waybill"
+                },
+                "events": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CourierEvent"
+                    }
+                }
+            }
+        },
+        "DeliveryData": {
+            "type": "object",
+            "properties": {
+                "receiverName": {
+                    "type": "string",
+                    "description": "Person name who will receive the package",
+                    "example": "Alejandro Vázquez"
+                },
+                "deliveryDate": {
+                    "type": "string",
+                    "description": "Estimated date of delivery",
+                    "example": "2020-01-11T00:29:38.844Z"
+                }
+            }
+        },
+        "Waybill": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Id that identifies the waybill",
+                    "example": 1
+                },
+                "rateId": {
+                    "type": "number",
+                    "description": "Id that identifies the rate",
+                    "example": 1013
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "The external identifier number",
+                    "example": "ORD-TEP130-0130"
+                },
+                "mainWaybillNumber": {
+                    "type": "string",
+                    "description": "The main waybil number",
+                    "example": "123SANDBOX456TRACK789NUMBER1"
+                },
+                "waybillUrl": {
+                    "type": "string",
+                    "description": "The waybill url for storage",
+                    "example": "https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/789456131256.pdf"
+                },
+                "waybillType": {
+                    "type": "string",
+                    "description": "Waybill type"
+                },
+                "podUrl": {
+                    "type": "string",
+                    "description": "POD url",
+                    "example": "https://sppdevaccount.blob.core.windows.net/cca-microservice/tenant_54321/FEDEX/2019/11/2/pod_12390001.pdf"
+                },
+                "podType": {
+                    "type": "string",
+                    "description": "POD type"
+                },
+                "childWaybills": {
+                    "type": "string",
+                    "description": "The json object for all multiple waybills",
+                    "example": "[{'waybillShipmentId':'EMB025_1', 'waybillNumber':'076522264','waybillUrl':'https://www.go-sharp.com'}]"
+                },
+                "createdDate": {
+                    "type": "Date",
+                    "description": "The created date for the waybill",
+                    "example": "2020-01-11T00:29:38.844Z"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant for the client",
+                    "example": 54321
+                },
+                "rate": {
+                    "type": "Rate",
+                    "description": "Related rate"
+                }
+            }
+        },
+        "CourierEvent": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Event identification code",
+                    "example": "DHL-DELIVERED"
+                },
+                "courierMessage": {
+                    "type": "string",
+                    "description": "Event detail",
+                    "example": "Paquete entregado"
+                },
+                "action": {
+                    "type": "string",
+                    "description": "Event action",
+                    "example": "DELIVERED"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Location where the event occurred",
+                    "example": "Ciudad de México"
+                },
+                "time": {
+                    "type": "string",
+                    "description": "Time at which the event occurred",
+                    "example": "2020-01-11T00:29:38.844Z"
+                }
+            }
+        }
+    }
+}

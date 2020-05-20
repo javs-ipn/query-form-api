@@ -1,0 +1,3 @@
+export const ERROR_CONSTANTS = {
+    BAD_CREDENTIALS: 'BAD_CREDENTIALS',
+};

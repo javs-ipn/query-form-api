@@ -1,0 +1,4 @@
+export const SHIPMENT = {
+    NOT_AVAILABLE_DATA_NUMBER: 0,
+    NOT_AVAILABLE_DATA: 'N/A',
+};
