@@ -7,4 +7,10 @@ export class DBRepository extends Repository<DB> {
     public async getDB(): Promise<DB[]> {
         return this.find();
     }
+
+    public async getDbById(dbId: number): Promise<DB[]> {
+        return await this.find({
+            where: { id: dbId },
+        });
+    }
 }

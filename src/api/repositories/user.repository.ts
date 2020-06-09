@@ -21,7 +21,7 @@ export class UserRepository extends Repository<User> {
         return await getConnection()
             .createQueryBuilder()
             .update(User)
-            .set({ user: user.user, roleId: user.roleId, statusId: user.statusId })
+            .set({ user: user.user, email: user.email, roleId: user.roleId, statusId: user.statusId })
             .where('id = :id', { id: user.id })
             .execute();
         // return this.update({ id: user.id }, { user: user.user, email: user.email, roleId: user.roleId, statusId: user.statusId});

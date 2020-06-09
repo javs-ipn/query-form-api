@@ -17,4 +17,10 @@ export class QueryRepository extends Repository<Query> {
     public async updateQuery(queryInfo: any): Promise<any> {
         return this.update({ id: queryInfo.id }, { statusId: queryInfo.newStatus, rejectMssg: queryInfo.rejectMssg });
     }
+
+    public async getQueryById(queryId: number): Promise<Query[]> {
+        return await this.find({
+            where: { id: queryId },
+        });
+    }
 }

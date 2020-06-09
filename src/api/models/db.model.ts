@@ -12,6 +12,9 @@ export class DB {
     @Column({ name: 'base', comment: 'Database name' })
     public base: string;
 
+    @Column({ name: 'user_name', comment: 'User name' })
+    public userName: string;
+
     @Column({ name: 'private_ip', type: 'varchar', comment: 'Private IP' })
     public privateIp: string;
 
