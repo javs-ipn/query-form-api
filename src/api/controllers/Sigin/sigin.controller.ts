@@ -7,7 +7,7 @@ export class SiginController {
     }
 
     @Post('/')
-    public rate(@Body() user: any): Promise<any> {
+    public authUser(@Body() user: any): Promise<any> {
         return this.userService.authUser(user);
     }
 }

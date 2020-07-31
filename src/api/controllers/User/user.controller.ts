@@ -1,7 +1,10 @@
-import { Get, JsonController, Post, Body } from 'routing-controllers';
+import { GenericBussinessLogicError } from './../../errors/Generic/generic-bussinessLogic.error';
+import { Get, JsonController, Post, Body, Authorized } from 'routing-controllers';
+import * as bcrypt from 'bcrypt';
 
 import { UserService } from '../../services/user.service';
 
+@Authorized()
 @JsonController('/user')
 export class UserController {
     constructor(
@@ -15,7 +18,14 @@ export class UserController {
 
     @Post('/createUser')
     public createUser(@Body() user: any): Promise<any> {
-        return this.userService.createUser(user);
+        bcrypt.hash(user.pass, 10, (err, encrypted) => {
+            if (err) {
+                throw new GenericBussinessLogicError('Error encrypting password');
+            }
+            user.pass = encrypted;
+            this.userService.createUser(user);
+        });
+        return user;
     }
 
     @Post('/updateUser')

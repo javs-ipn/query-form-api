@@ -1,7 +1,7 @@
 {
   "name": "courier-connection-api",
   "version": "1.0.0",
-  "description": "Rest api to request waybills to different delivery services such as ESTAFETA, DHL, FEDEX, REDPACK ...",
+  "description": "Rest api",
   "main": "src/app.ts",
   "scripts": {
     "start": "nps",
@@ -19,6 +19,7 @@
     "applicationinsights": "^1.7.0",
     "atob-lite": "^2.0.0",
     "axios": "^0.19.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "1.18.2",
     "chalk": "2.3.0",
     "class-validator": "0.7.3",
@@ -44,6 +45,7 @@
     "moment": "2.24.0",
     "morgan": "^1.9.1",
     "mssql": "5.0.5",
+    "mysql": "^2.18.1",
     "npm": "6.9.0",
     "path": "0.12.7",
     "reflect-metadata": "0.1.10",

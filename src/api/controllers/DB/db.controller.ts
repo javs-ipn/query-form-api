@@ -1,7 +1,8 @@
-import { Get, JsonController } from 'routing-controllers';
+import { Authorized, Get, JsonController } from 'routing-controllers';
 
 import { DBService } from './../../services/db.service';
 
+@Authorized()
 @JsonController('/db')
 export class QueryFormController {
     constructor(

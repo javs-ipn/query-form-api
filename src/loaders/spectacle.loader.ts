@@ -1,6 +1,8 @@
 import * as path from 'path';
-import { env } from '../env';
+
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+
+import { env } from '../env';
 
 export const spectacleLoader: MicroframeworkLoader = (settings: MicroframeworkSettings | undefined) => {
     if (settings) {

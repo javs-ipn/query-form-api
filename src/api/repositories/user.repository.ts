@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
     public async getUserByEmail(user: any): Promise<User> {
-        return this.findOne({ email: user.email, pass: user.pass });
+        return this.findOne({ email: user.email });
     }
 
     public async getUsers(): Promise<User[]> {

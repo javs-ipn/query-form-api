@@ -5,26 +5,39 @@ import { Require, Service } from 'typedi';
 import { Logger, LoggerInterface } from '../decorators/Logger';
 import { env } from '../env';
 import { TokenInfoInterface } from './TokenInfoInterface';
+import { CryptoService } from '../api/services/crypto.service';
+import { GenericNotFoundError } from '../api/errors/Generic/generic-notFound.error';
+import { OrmRepository } from 'typeorm-typedi-extensions';
+import { UserRepository } from '../api/repositories/user.repository';
+import { AuthRepository } from '../api/repositories/auth.repository';
+import { Auth } from 'src/api/models/auth.model';
 
 @Service()
 export class AuthService {
 
+    private static TOKEN_TYPE = 'bearer';
     private httpRequest: typeof request;
 
     constructor(
         @Require('request') r: any,
-        @Logger(__filename) private log: LoggerInterface
+        @Logger(__filename) private log: LoggerInterface,
+        private cryptoService: CryptoService,
+        @OrmRepository() private userRepository: UserRepository,
+        @OrmRepository() private authRepository: AuthRepository
     ) {
         this.httpRequest = r;
     }
 
-    public parseTokenFromRequest(req: express.Request): string | undefined {
+    public async parseTokenFromRequest(req: express.Request): Promise<Auth | undefined> {
         const authorization = req.header('authorization');
+        console.log('auth', authorization);
 
         // Retrieve the token form the Authorization header
         if (authorization && authorization.split(' ')[0] === 'Bearer') {
             this.log.info('Token provided by the client');
-            return authorization.split(' ')[1];
+            const reqToken = authorization.split(' ')[1];
+            const token = await this.authRepository.getToken(reqToken);
+            return token;
         }
 
         this.log.info('No Token provided by the client');
@@ -52,6 +65,24 @@ export class AuthService {
                 return reject(error);
             });
         });
+    }
+
+    public async createToken(user: any): Promise<any> {
+        const foundUser = await this.userRepository.getUserByEmail(user);
+        if (!foundUser) {
+            throw new GenericNotFoundError(user.email, undefined);
+        }
+        const createdToken = this.cryptoService.createToken();
+        let objectToken;
+        this.authRepository.save({
+            email: user.email,
+            token: createdToken,
+        });
+        objectToken = {
+            access_token: createdToken,
+            token_type: AuthService.TOKEN_TYPE,
+        };
+        return objectToken;
     }
 
 }

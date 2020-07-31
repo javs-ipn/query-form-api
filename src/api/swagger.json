@@ -3,7 +3,7 @@
     "host": "localhost:3000",
     "info": {
         "title": "Courier Connection Api",
-        "description": "Rest api to request waybills to different delivery services such as ESTAFETA, DHL, FEDEX, REDPACK, PAQUETEEXPRESS.",
+        "description": "Rest api",
         "version": "1.14.1"
     },
     "basePath": "/api",
